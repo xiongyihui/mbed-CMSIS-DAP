@@ -1,0 +1,8 @@
+{
+  "name": "cmsis-dap",
+  "version": "0.0.1",
+  "description": "mbed CMSIS DAP",
+  "bin": "./source",
+  "dependencies": {
+  }
+}
