@@ -1,0 +1,10 @@
+{
+    "config": {
+    },
+    "target_overrides": {
+        "NRF52840_DK": {
+            "target.mbed_app_start": "0x1000",
+            "target.restrict_size": "0xf3000"
+        }
+    }
+}
