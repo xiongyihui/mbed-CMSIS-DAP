@@ -7,9 +7,10 @@
 
 static EventQueue event_queue(/* event count */ 10 * EVENTS_EVENT_SIZE);
 
+// SWD swd(P0_25, P0_26, P0_27); // SWDIO, SWCLK, nRESET
 
+SWD swd(P0_8, P0_7, P0_6); // SWDIO, SWCLK, nRESET for nRF52840 MDK USB Dongle
 
-SWD swd(P0_25, P0_26, P0_27); // SWDIO,SWCLK,nRESET
 DigitalOut connected(P0_22);
 DigitalOut running(P0_23);
 
@@ -21,9 +22,9 @@ public:
     const uint8_t *string_iproduct_desc()
     {
         static const uint8_t stringIproductDescriptor[] = {
-            30,                                                       //bLength
+            20,                                                       //bLength
             STRING_DESCRIPTOR,                                          //bDescriptorType 0x03
-            'm', 0, 'b', 0, 'e', 0, 'd', 0, ' ', 0, 'C', 0, 'M', 0, 'S', 0, 'I', 0, 'S', 0, '-', 0, 'D', 0, 'A', 0, 'P', 0 //bString iProduct - HID device
+            'C', 0, 'M', 0, 'S', 0, 'I', 0, 'S', 0, '-', 0, 'D', 0, 'A', 0, 'P', 0 //bString iProduct - HID device
         };
         return stringIproductDescriptor;
     }
@@ -31,9 +32,9 @@ public:
     const uint8_t *string_imanufacturer_desc()
     {
         static const uint8_t string_imanufacturer_descriptor[] = {
-            0x12,                                            /*bLength*/
+            0x16,                                            /*bLength*/
             STRING_DESCRIPTOR,                               /*bDescriptorType 0x03*/
-            'm', 0, 'b', 0, 'e', 0, 'd', 0, '.', 0, 'o', 0, 'r', 0, 'g', 0, /*bString iManufacturer */
+            'm', 0, 'a', 0, 'k', 0, 'e', 0, 'r', 0, 'd', 0, 'i', 0, 'a', 0, 'r', 0, 'y', '0' /*bString iManufacturer */
         };
         return string_imanufacturer_descriptor;
     }

@@ -26,3 +26,19 @@ Tested devices:
     + [nRF52840-MDK ](https://wiki.makerdiary.com/nrf52840-mdk/)
     + [Pitaya Go](https://wiki.makerdiary.com/pitaya-go/)
 
+## For nRF52840 MDK USB Dongle
+1.  Download pre-built firmware [CMSIS-DAP for nRF52840 MDK USB Dongle](cmsis-dap-for-nrf52840-mdk-usb-dongle-0x1000.hex)
+2.  Use nRF Connect Desktop or nRF Util to upgrade the firmware via its bootloader
+
+    ```
+    pip3 install nrfutil
+    nrfutil pkg generate --hw-version 52 --application-version 1 --sd-req 0x00 --application cmsis-dap-for-nrf52840-mdk-usb-dongle-0x1000.hex cmsis-dap.zip
+    nrfutil dfu usb-serial -pkg cmsis-dap.zip -p /dev/ttyACM0
+    ```
+
+3. Connect the USB Dongle with a ARM microcontroller through SWD interface
+
+    + nRESET - p0.6
+    + SWCLK - p0.7
+    + SWDIO - p0.8
+
